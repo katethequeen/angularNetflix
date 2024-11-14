@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <p class="text-white text-center fs-1 lh-base fw-semibold">
+    {{
+      managingProfile ? "Gestisci i profili:" : "Chi vuole guardare Netflix?"
+    }}
+  </p>
+
+  <div *ngIf="accountsLoaded">
+    <div class="row d-flex flex-row align-items-center justify-content-center">
+      <div class="col" *ngFor="let account of accounts; let i = index">
+        <a
+          [routerLink]="
+            managingProfile
+              ? ['/modify', account.id]
+              : ['/home', { id: account.id }]
+          "
+        >
+          <app-squared-profile
+            [managingProfile]="managingProfile"
+            [account]="account"
+          ></app-squared-profile>
+        </a>
+      </div>
+      <div class="col" *ngFor="let placeholder of getPlaceholderProfiles()">
+        <a routerLink="/enter-name">
+          <app-squared-profile
+            [managingProfile]="managingProfile"
+            [account]="placeholder"
+          ></app-squared-profile>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-center text-white-0">
+    <button
+      class="btn fs-5 d-flex justify-content-center align-items-center"
+      [ngClass]="managingProfile ? 'btn-manage' : 'btn-default'"
+      (click)="toggleManaging()"
+    >
+      {{ managingProfile ? "Fine" : "Gestisci i profili" }}
+    </button>
+  </div>
+</div>

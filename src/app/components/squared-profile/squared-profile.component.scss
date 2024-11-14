@@ -1,0 +1,66 @@
+.square {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  border: 1px solid hsl(0, 0%, 50%);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #e5e5e5;
+  }
+  span {
+    font-size: 20px;
+  }
+}
+img {
+  border-radius: 5px !important;
+  &:hover {
+    border: 4px solid #fff;
+  }
+}
+
+.hover-text {
+  display: none;
+  position: absolute;
+  left: 130px; // Puoi regolare questa posizione in base alle tue esigenze
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: black;
+  white-space: nowrap;
+}
+.hover-text.show {
+  display: inline;
+}
+.icon {
+  color: hsl(0, 0%, 50%);
+  width: 150px;
+  height: 150px;
+  font-size: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+.square:hover + p {
+  color: white;
+}
+.edit-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 50px;
+  outline: none;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Colore trasparente */
+  box-sizing: border-box;
+}

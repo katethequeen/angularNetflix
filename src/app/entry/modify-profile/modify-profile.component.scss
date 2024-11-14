@@ -1,0 +1,112 @@
+.black-bar {
+  height: 10vh;
+  position: sticky;
+  top: 0;
+}
+.container {
+  color: #fff;
+  max-width: 52%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+}
+h1 {
+  font-size: 60px;
+  font-weight: 500;
+}
+h5 {
+  color: rgba(255, 255, 255, 0.8);
+}
+.icon {
+  width: 120px;
+  border-radius: 3px;
+}
+input {
+  border-radius: 0;
+  background-color: hsl(0, 0%, 50%);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 100%;
+  padding-block: 6px;
+  padding-inline: 12px;
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+h6 {
+  display: inline-block;
+  background-color: #333333;
+  padding: 5px 10px;
+  margin-block: 10px;
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .checkbox-container input[type="checkbox"] {
+    display: none; /* Nasconde la checkbox nativa */
+  }
+  input[type="checkbox"] {
+    appearance: none; /* Rimuove l'aspetto predefinito */
+    width: 30px; /* Dimensione del pulsante checkbox */
+    height: 30px; /* Dimensione del pulsante checkbox */
+    background-color: transparent; /* Sfondo trasparente */
+    border: 2px solid gray; /* Bordo personalizzato */
+    position: relative; /* Necessario per il contenuto :checked */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    margin-right: 5px;
+  }
+  input[type="checkbox"]:checked:after {
+    content: ""; /* Contenuto vuoto per la freccia */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px; /* Larghezza della freccia */
+    height: 20px; /* Altezza della freccia */
+    transform: translate(-50%, -50%) rotate(45deg); /* Trasformazione per la freccia */
+    border-right: 2px solid white; /* Bordo sinistro della freccia */
+    border-bottom: 2px solid white; /* Bordo inferiore della freccia */
+  }
+  label {
+    font-size: 14px;
+  }
+}
+button {
+  border: 1px solid hsl(0, 0%, 50%);
+  border-radius: 0%;
+  color: hsl(0, 0%, 50%);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: transparent;
+}
+.btn-default {
+  padding-block: 5px;
+  padding-inline: 30px;
+  &:hover {
+    border: 1px solid #fff;
+    color: #fff;
+  }
+}
+.btn-manage {
+  background-color: #fff;
+  color: #000;
+  width: 110px;
+  &:hover {
+    background-color: red;
+    color: #070606;
+  }
+}
+.bottoni {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.btn-hr {
+  margin-top: 30px;
+}

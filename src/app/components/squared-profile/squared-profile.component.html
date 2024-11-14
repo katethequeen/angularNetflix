@@ -1,0 +1,20 @@
+<div class="row d-flex flex-row align-items-center justify-content-center">
+  <button class="square my-3" *ngIf="account">
+    <img
+      [src]="account.icon"
+      alt=""
+      *ngIf="account.icon; else addIcon"
+      class="icon"
+    />
+    <ng-template #addIcon>
+      <mat-icon class="icon">add_circle</mat-icon>
+    </ng-template>
+
+    <mat-icon class="edit-icon" *ngIf="managingProfile && account.id"
+      >edit</mat-icon
+    >
+  </button>
+  <p class="text-decoration-none text-center" *ngIf="account">
+    {{ account.name ? account.name : "Aggiungi un profilo" }}
+  </p>
+</div>

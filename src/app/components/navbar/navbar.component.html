@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <div>
+    <a mat-button routerLink="/home" class="logo">Netflix</a>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/home">Home</a>
+    <a mat-button routerLink="/about">Serie TV</a>
+    <a mat-button routerLink="/services">Film</a>
+    <a mat-button routerLink="/contact">Nuovi e popolari</a>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/contact">La mia lista</a>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/contact">Sfoglia per lingua</a>
+  </div>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/home" class="fs-1">
+    <mat-icon class="text-white fs-3">search</mat-icon>
+  </a>
+  <a mat-button routerLink="/home" class="fs-1">
+    <mat-icon class="text-white fs-4">notifications_none</mat-icon>
+  </a>
+
+  <div class="btn-group">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      data-bs-toggle="dropdown"
+      data-bs-auto-close="true"
+      aria-expanded="false"
+      *ngIf="account"
+    >
+      <img [src]="account.icon" alt="Icon" />
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item text-start" href="#">Menu item</a></li>
+      <li><a class="dropdown-item" href="#">Menu item</a></li>
+      <li><a class="dropdown-item" href="#">Menu item</a></li>
+    </ul>
+  </div>
+</mat-toolbar>
