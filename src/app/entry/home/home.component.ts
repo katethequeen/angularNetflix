@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../../services/movies.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { iMovies } from '../../model/i-movies';
-import { iAccount } from '../../model/i-account';
-import { AccountService } from '../../services/account.service';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-home',
@@ -12,18 +11,47 @@ import { AccountService } from '../../services/account.service';
 export class HomeComponent implements OnInit {
   movies: iMovies[] = [];
   movieGroups: iMovies[] = [];
+  comedy: iMovies[] = [];
+  family: iMovies[] = [];
+  fantasy: iMovies[] = [];
+  horror: iMovies[] = [];
+  drama: iMovies[] = [];
+  accountId!: string;
 
   constructor(
     private moviesSvc: MoviesService,
-    private accountSvc: AccountService
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.getMovies();
+    this.route.params.subscribe((params) => {
+      this.accountId = params['id'];
+      if (!this.router.url.includes('home')) {
+        this.router.navigate([`/home/${this.accountId}/home`]);
+      }
+      console.log('Account ID:', this.accountId); // Verifica se l'ID viene letto correttamente
+    });
   }
+
   getMovies(): void {
     this.moviesSvc.getAllMovies().subscribe((movie) => {
       this.movies = movie;
       this.movieGroups = this.shuffleArray(this.movies.slice());
+
+      //Richiamo la categoria
+      this.comedy = this.filterMoviesByCategory('comedy');
+      this.family = this.filterMoviesByCategory('family');
+      this.fantasy = this.filterMoviesByCategory('fantasy');
+      this.horror = this.filterMoviesByCategory('horror');
+      this.drama = this.filterMoviesByCategory('drama');
+
+      // Verifica i film filtrati
+      console.log('Comedy Movies:', this.comedy);
+      console.log('Family Movies:', this.family);
+      console.log('Fantasy Movies:', this.fantasy);
+      console.log('Horror Movies:', this.horror);
+      console.log('Drama Movies:', this.drama);
     });
   }
 
@@ -33,5 +61,12 @@ export class HomeComponent implements OnInit {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  }
+
+  //Filtro i Film per categoria
+  filterMoviesByCategory(category: string): iMovies[] {
+    return this.movies.filter(
+      (movie) => movie.categories && movie.categories.includes(category)
+    );
   }
 }

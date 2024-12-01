@@ -1,22 +1,22 @@
 <div class="box">
-  <h1>Aggiungi un profilo</h1>
-  <p>Aggiungi un profilo per un'altra persona che guarderà Netflix</p>
+  <h1>Add a profile</h1>
+  <p>Add a profile for another person watching Netflix.</p>
   <form (ngSubmit)="onSubmit()">
     <div>
       <img [src]="selectedIcon?.name" alt="icon" />
 
-      <input type="text" placeholder="Nome" [(ngModel)]="name" name="name" />
+      <input type="text" placeholder="Name" [(ngModel)]="name" name="name" />
     </div>
     <hr />
     <div class="children-section">
       <div>
-        <h5>Profilo Bambini</h5>
-        <p>Guarda solo serie TV e film adatti ai bambini</p>
+        <h5>Kids Profile</h5>
+        <p>Only see kid-friendly Tv Shows and movies</p>
       </div>
       <app-slide-toggle></app-slide-toggle>
     </div>
 
-    <button type="submit">Salva</button>
-    <button routerLink="/entry">Annulla</button>
+    <button type="submit">Save</button>
+    <button routerLink="/entry">Cancel</button>
   </form>
 </div>

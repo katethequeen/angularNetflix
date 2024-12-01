@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EntryComponent } from './entry.component';
 import { EnterNameComponent } from './enter-name/enter-name.component';
-import { HomeComponent } from './home/home.component';
 import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
 
 const routes: Routes = [
@@ -16,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'modify/:id',

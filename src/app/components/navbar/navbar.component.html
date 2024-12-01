@@ -1,22 +1,26 @@
 <mat-toolbar>
   <div>
-    <a mat-button routerLink="/home" class="logo">Netflix</a>
+    <a mat-button [routerLink]="['/home', { id: account.id }]" class="logo"
+      >Netflix</a
+    >
     <span class="spacer"></span>
-    <a mat-button routerLink="/home">Home</a>
-    <a mat-button routerLink="/about">Serie TV</a>
-    <a mat-button routerLink="/services">Film</a>
-    <a mat-button routerLink="/contact">Nuovi e popolari</a>
+    <a mat-button [routerLink]="['/home', { id: account.id }]">Home</a>
+    <a mat-button [routerLink]="['/home', account.id, 'show']">TV Shows</a>
+    <a mat-button [routerLink]="['/home', account.id, 'movies']">Movies</a>
+    <a mat-button [routerLink]="['/home', account.id, 'new-popular']"
+      >New & Popular</a
+    >
     <span class="spacer"></span>
-    <a mat-button routerLink="/contact">La mia lista</a>
+    <a mat-button routerLink="/home/my-list">My List</a>
     <span class="spacer"></span>
-    <a mat-button routerLink="/contact">Sfoglia per lingua</a>
+    <a mat-button routerLink="/contact">Browse by Languages</a>
   </div>
   <span class="spacer"></span>
   <a mat-button routerLink="/home" class="fs-1">
-    <mat-icon class="text-white fs-3">search</mat-icon>
+    <mat-icon class="text-white fs-2">search</mat-icon>
   </a>
   <a mat-button routerLink="/home" class="fs-1">
-    <mat-icon class="text-white fs-4">notifications_none</mat-icon>
+    <mat-icon class="text-white fs-3">notifications_none</mat-icon>
   </a>
 
   <div class="btn-group">

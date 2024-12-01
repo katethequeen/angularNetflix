@@ -1,6 +1,6 @@
 <div class="black-bar"></div>
 <div class="container">
-  <h1 class="mb-0">Modifica il profilo</h1>
+  <h1 class="mb-0">Edit Profile</h1>
   <hr class="mt-1 mb-4" />
   <form>
     <div class="row">
@@ -18,17 +18,17 @@
           />
         </div>
         <div class="lingua mt-5">
-          <h5>Lingua:</h5>
+          <h5>Language:</h5>
           <select class="bg-black text-white fw-semibold pe-4 ps-1">
-            <option value="it">italiano</option>
-            <option value="en">inglese</option>
+            <option value="it">Italian</option>
+            <option value="en">English</option>
           </select>
         </div>
         <div class="identificativo mt-4">
-          <h5>Identificativo di gioco</h5>
+          <h5>Game handle</h5>
           <p>
-            L'identificativp è un nome univoco che serve per giocare con altri
-            abbonati Netflix nella sezione Netflix Games. <a>Scopri di più</a>
+            Your handle is a unique name that'll be used for playing with other
+            Netflix members across all Netflix Games. <a>Learn more</a>
           </p>
           <div>
             <input
@@ -40,39 +40,34 @@
         </div>
         <hr class="mt-5 mb-4" />
         <div class="eta">
-          <h5>Classificazione per età</h5>
-          <h6>Tutte le fasce d'età</h6>
-          <p>
-            Mostra titoli con classificazione per tutte le fasce d'età per
-            questo profilo
-          </p>
-          <button class="btn-default mt-4 fs-6">Modifica</button>
+          <h5>Maturity Settings</h5>
+          <h6>All Maturity Ratings</h6>
+          <p>Show title of all maturity ratings for this profile.</p>
+          <button class="btn-default mt-4 fs-6">Edit</button>
         </div>
         <hr class="mt-5 mb-3" />
         <div class="riproduzione">
-          <h5>Riproduzione automatica</h5>
+          <h5>Autoplay controls</h5>
           <div class="checkbox-container">
             <input type="checkbox" id="autoEpisode" />
             <label for="autoEpisode"
-              >Riproduci automaticamente l'episodio successivo di una serie su
-              tutti i dispositivi.</label
+              >Autoplay next episode in a series on all devices.</label
             >
           </div>
           <div class="checkbox-container">
             <input type="checkbox" id="autoPreview" />
             <label for="autoPreview"
-              >Riproduci automaticamente le anteprime mentre sfoglio su tutti i
-              dispositivi.</label
+              >Autoplay previews while browsing on all devices.</label
             >
           </div>
         </div>
       </div>
       <hr class="btn-hr" />
       <div class="bottoni d-flex gap-3">
-        <button type="submit" (click)="save()" class="btn-manage">Salva</button>
-        <button routerLink="/entry" class="btn-default">Annulla</button>
+        <button type="submit" (click)="save()" class="btn-manage">Save</button>
+        <button routerLink="/entry" class="btn-default">Cancel</button>
         <button (click)="delete(account.id)" class="btn-default">
-          Elimina profilo
+          Delete Profile
         </button>
       </div>
     </div>

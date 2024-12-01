@@ -1,4 +1,6 @@
 <app-navbar></app-navbar>
+<router-outlet></router-outlet>
+
 <div
   class="bg-image"
   [ngStyle]="{ 'background-image': 'url(' + movies[0].poster + ')' }"
@@ -7,12 +9,12 @@
   <p>{{ movies[0].storyline }}</p>
   <div class="main-btns">
     <button class="main-btn">
-      <mat-icon>play_arrow</mat-icon>
-      Riproduci
+      <mat-icon class="play">play_arrow</mat-icon>
+      Play
     </button>
-    <button class="main-btn">
-      <mat-icon>info_outline</mat-icon>
-      Altre info
+    <button class="main-btn outline-btn">
+      <mat-icon class="outline">info_outline</mat-icon>
+      More info
     </button>
   </div>
   <div class="span-container">
@@ -20,98 +22,28 @@
   </div>
 </div>
 
-<div class="slider-box">
-  <section class="container-fluid slider">
-    <div class="d-flex justify-content-between">
-      <h4>Scelti per te oggi</h4>
-      <div>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-    </div>
-    <div
-      id="carouselExampleIndicators"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <ng-container *ngFor="let group of [0, 1, 2, 3]; let i = index">
-          <div class="carousel-item" [ngClass]="{ active: i === 0 }">
-            <section class="d-flex">
-              <ng-container
-                *ngFor="let movie of movies.slice(i * 6, i * 6 + 6)"
-              >
-                <div class="card">
-                  <img [src]="movie.poster" class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <mat-icon class="card-icon"
-                          >play_circle_outline</mat-icon
-                        >
-                        <mat-icon class="card-icon"
-                          >add_circle_outline</mat-icon
-                        >
-                      </div>
-                      <div>
-                        <mat-icon class="card-icon"
-                          >arrow_drop_down_circle_outline</mat-icon
-                        >
-                      </div>
-                    </section>
-                    <section
-                      class="d-flex justify-content-between align-items-center"
-                    >
-                      <p class="netflix-card-text m-0 text-success">
-                        97% match
-                      </p>
-                      <span class="netflix-card-text m-2">Limited Movie</span>
-                      <span class="netflix-card-text p-1">HD</span>
-                    </section>
-                    <p class="netflix-card-text m-0">tags</p>
-                  </div>
-                </div>
-              </ng-container>
-            </section>
-          </div>
-        </ng-container>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </section>
-</div>
+<app-carousel
+  [title]="'Comedy'"
+  [carouselId]="'carousel1'"
+  [movies]="comedy"
+></app-carousel>
+<app-carousel
+  [title]="'Family'"
+  [carouselId]="'carousel2'"
+  [movies]="family"
+></app-carousel>
+<app-carousel
+  [title]="'Fantasy'"
+  [carouselId]="'carousel3'"
+  [movies]="fantasy"
+></app-carousel>
+<app-carousel
+  [title]="'Horror'"
+  [carouselId]="'carousel4'"
+  [movies]="horror"
+></app-carousel>
+<app-carousel
+  [title]="'Drama'"
+  [carouselId]="'carousel5'"
+  [movies]="drama"
+></app-carousel>
