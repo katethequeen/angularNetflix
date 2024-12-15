@@ -6,7 +6,7 @@ import { ModifyProfileComponent } from './modify-profile/modify-profile.componen
 
 const routes: Routes = [
   {
-    path: 'entry',
+    path: '',
     component: EntryComponent,
   },
   {

@@ -7,10 +7,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideHttpClient } from '@angular/common/http';
-import { NavGenresComponent } from './components/nav-genres/nav-genres.component';
 
 @NgModule({
-  declarations: [AppComponent, NavGenresComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, AngularMaterialModule, NgbModule],
   providers: [provideAnimationsAsync(), provideHttpClient()],
   bootstrap: [AppComponent],

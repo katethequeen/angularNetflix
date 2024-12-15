@@ -2,6 +2,7 @@
   margin-top: 0px;
   margin-bottom: 200px;
   padding-inline: 2.5rem;
+  max-width: 100%;
   .line-btns {
     margin-top: -155px;
   }
@@ -16,10 +17,10 @@
   .carousel-inner {
     position: relative;
     overflow: visible;
-  }
-  .card-section {
-    position: absolute;
-    top: -64px;
+    top: -54px;
+    &::after {
+      display: none;
+    }
   }
 
   .card {
@@ -43,7 +44,7 @@
   }
 
   .card-img-top {
-    width: 100%;
+    max-width: 100%;
     object-fit: cover;
   }
 
@@ -86,7 +87,7 @@
   .carousel-control-prev,
   .carousel-control-next {
     position: absolute;
-    top: 50%;
+    top: 10px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     width: 50px;

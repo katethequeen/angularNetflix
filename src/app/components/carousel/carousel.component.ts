@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { iMovies } from '../../model/i-movies';
 
 @Component({
@@ -12,10 +12,32 @@ export class CarouselComponent {
 
   @Input() movies: iMovies[] = [];
 
+  cardsPerSlide = 6;
+
   constructor() {}
 
   ngOnInit(): void {
     console.log('Carousel Movies:', this.movies);
+    this.updateCardsPerSlide();
+  }
+
+  //Resize delle card in base alla grandezza dello schermo
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateCardsPerSlide();
+  }
+
+  updateCardsPerSlide() {
+    const width = window.innerWidth;
+    if (width <= 580) {
+      this.cardsPerSlide = 2;
+    } else if (width <= 740) {
+      this.cardsPerSlide = 4;
+    } else if (width <= 860) {
+      this.cardsPerSlide = 5;
+    } else {
+      this.cardsPerSlide = 6;
+    }
   }
 
   // Funzione per formattare le categorie

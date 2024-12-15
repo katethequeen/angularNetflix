@@ -5,7 +5,7 @@
   padding-bottom: 100px;
   padding-left: 4rem;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,9 @@
   p {
     width: 45%;
     font-weight: 600;
+    @media screen and (max-width: 860px) {
+      display: none;
+    }
   }
   .span-container {
     display: flex;
@@ -69,5 +72,80 @@
       font-size: 32px;
       color: #fff;
     }
+  }
+}
+
+//Search section
+.slider-box {
+  margin-top: 200px;
+  margin-bottom: 500px;
+  padding-inline: 2.5rem;
+  width: 100%;
+
+  h4 {
+    margin-top: -150px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .card {
+    width: 228px;
+    height: 120px;
+    border-radius: 4px;
+    position: relative;
+    margin: 3px;
+    border: 0;
+    outline: 0;
+    z-index: 1;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      transform: scale(1.4);
+      margin-top: -40px;
+      height: 223px;
+      z-index: 10;
+      cursor: pointer;
+    }
+  }
+
+  .card-img-top {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    background-color: #141414;
+    padding: 10px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  .card-icon {
+    color: #fff;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .runtime {
+    color: #787676;
+  }
+  .percentage {
+    font-size: 15px;
+  }
+  .hd-text {
+    color: #787676;
+    font-size: 8px;
+    border: 1px solid #787676;
+  }
+  .tags {
+    color: #fff;
+    font-size: 13px;
   }
 }

@@ -1,8 +1,9 @@
 <mat-toolbar>
-  <div>
-    <a mat-button [routerLink]="['/home', { id: account.id }]" class="logo"
-      >Netflix</a
-    >
+  <mat-icon class="menu-icon" (click)="toggleSidenav()">menu</mat-icon>
+  <a mat-button [routerLink]="['/home', { id: account.id }]" class="logo"
+    >Netflix</a
+  >
+  <div class="toolbar-links">
     <span class="spacer"></span>
     <a mat-button [routerLink]="['/home', { id: account.id }]">Home</a>
     <a mat-button [routerLink]="['/home', account.id, 'show']">TV Shows</a>
@@ -16,10 +17,20 @@
     <a mat-button routerLink="/contact">Browse by Languages</a>
   </div>
   <span class="spacer"></span>
-  <a mat-button routerLink="/home" class="fs-1">
-    <mat-icon class="text-white fs-2">search</mat-icon>
-  </a>
-  <a mat-button routerLink="/home" class="fs-1">
+
+  <div class="search-container" [ngClass]="{ active: showSearchBar }">
+    <mat-icon class="text-white fs-2" (click)="toggleSearchBar()"
+      >search</mat-icon
+    >
+    <input
+      *ngIf="showSearchBar"
+      type="search"
+      placeholder="Titles, people, genres"
+      class="search-input"
+      (input)="onSearch($event)"
+    />
+  </div>
+  <a mat-button [routerLink]="['/home', { id: account.id }]" class="fs-1">
     <mat-icon class="text-white fs-3">notifications_none</mat-icon>
   </a>
 
@@ -32,12 +43,35 @@
       aria-expanded="false"
       *ngIf="account"
     >
-      <img [src]="account.icon" alt="Icon" />
+      <img [src]="account.icon" alt="Icon" class="nav-icon" />
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item text-start" href="#">Menu item</a></li>
-      <li><a class="dropdown-item" href="#">Menu item</a></li>
-      <li><a class="dropdown-item" href="#">Menu item</a></li>
+      <li *ngFor="let acc of filteredAccounts">
+        <a [routerLink]="['/home', { id: acc.id }]" class="dropdown-a">
+          <img [src]="acc.icon" alt="account_icon" class="dropdown-img" />
+          <span class="text-start dropdown-span">{{ acc.name }}</span>
+        </a>
+      </li>
+      <hr class="text-white m-1" />
+      <li>
+        <a class="dropdown-a d-flex justify-content-center" routerLink="/entry"
+          >Logout</a
+        >
+      </li>
     </ul>
   </div>
 </mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="side" [opened]="sidenavOpen">
+    <nav class="sidenav-nav">
+      <a mat-list-item [routerLink]="['/home', { id: account.id }]">Home</a>
+      <a mat-list-item [routerLink]="['/home', account.id, 'show']">TV Shows</a>
+      <a mat-list-item [routerLink]="['/home', account.id, 'movies']">Movies</a>
+      <a mat-list-item [routerLink]="['/home', account.id, 'new-popular']"
+        >New & Popular</a
+      >
+      <a mat-list-item routerLink="/home/my-list">My List</a>
+      <a mat-list-item routerLink="/contact">Browse by Languages</a>
+    </nav>
+  </mat-sidenav>
+</mat-sidenav-container>

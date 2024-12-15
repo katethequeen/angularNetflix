@@ -34,7 +34,14 @@
       >
         <div class="carousel-item" [ngClass]="{ active: i === 0 }">
           <section class="d-flex card-section">
-            <ng-container *ngFor="let movie of movies.slice(i * 6, i * 6 + 6)">
+            <ng-container
+              *ngFor="
+                let movie of movies.slice(
+                  i * cardsPerSlide,
+                  i * cardsPerSlide + cardsPerSlide
+                )
+              "
+            >
               <div class="card">
                 <img [src]="movie.poster" class="card-img-top" alt="..." />
                 <div class="card-body">

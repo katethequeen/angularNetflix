@@ -1,12 +1,63 @@
-<app-navbar></app-navbar>
+<app-navbar (searchResults)="onSearchResults($event)"></app-navbar>
+
+<div
+  *ngIf="groupedMovies.length > 0 && searchQuery.length > 0"
+  class="slider-box"
+>
+  <section class="container-fluid slider">
+    <div class="d-flex justify-content-between align-items-center">
+      <h4>Results</h4>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let group of groupedMovies; let i = index">
+        <div
+          *ngFor="let movie of group"
+          class="col-12 col-sm-6 col-md-2 col-lg-2 mb-5"
+        >
+          <div class="card">
+            <img [src]="movie.poster" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <section class="d-flex justify-content-between">
+                <div>
+                  <mat-icon class="card-icon">play_circle_outline</mat-icon>
+                  <mat-icon class="card-icon">add_circle_outline</mat-icon>
+                </div>
+                <div>
+                  <mat-icon class="card-icon"
+                    >arrow_drop_down_circle_outline</mat-icon
+                  >
+                </div>
+              </section>
+              <section class="d-flex align-items-center">
+                <p class="netflix-card-text m-0 text-success percentage">
+                  97% match
+                </p>
+                <span class="netflix-card-text m-2 runtime">{{
+                  formatRuntime(movie.runtime)
+                }}</span>
+                <span class="netflix-card-text p-1 hd-text">HD</span>
+              </section>
+              <p class="netflix-card-text m-0 tags">
+                {{ formatCategories(movie.categories) }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+</div>
 <router-outlet></router-outlet>
 
 <div
   class="bg-image"
-  [ngStyle]="{ 'background-image': 'url(' + movies[0].poster + ')' }"
+  [ngStyle]="{
+    'background-image': 'url(' + randomPoster.poster + ')'
+  }"
+  *ngIf="searchQuery.length === 0"
 >
-  <h1>{{ movies[0].name }}</h1>
-  <p>{{ movies[0].storyline }}</p>
+  <h1>{{ randomPoster.name }}</h1>
+  <p>{{ randomPoster.storyline }}</p>
   <div class="main-btns">
     <button class="main-btn">
       <mat-icon class="play">play_arrow</mat-icon>
@@ -23,26 +74,31 @@
 </div>
 
 <app-carousel
+  *ngIf="searchQuery.length === 0"
   [title]="'Comedy'"
   [carouselId]="'carousel1'"
   [movies]="comedy"
 ></app-carousel>
 <app-carousel
+  *ngIf="searchQuery.length === 0"
   [title]="'Family'"
   [carouselId]="'carousel2'"
   [movies]="family"
 ></app-carousel>
 <app-carousel
+  *ngIf="searchQuery.length === 0"
   [title]="'Fantasy'"
   [carouselId]="'carousel3'"
   [movies]="fantasy"
 ></app-carousel>
 <app-carousel
+  *ngIf="searchQuery.length === 0"
   [title]="'Horror'"
   [carouselId]="'carousel4'"
   [movies]="horror"
 ></app-carousel>
 <app-carousel
+  *ngIf="searchQuery.length === 0"
   [title]="'Drama'"
   [carouselId]="'carousel5'"
   [movies]="drama"
