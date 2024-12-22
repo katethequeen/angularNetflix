@@ -88,16 +88,10 @@ export class HomeComponent implements OnInit {
     console.log('Drama Movies:', this.drama);
   }
 
-  onSearchResults({
-    movies,
-    query,
-  }: {
-    movies: iMovies[];
-    query: string;
-  }): void {
-    this.filteredMovies = movies;
-    this.searchQuery = query;
-    this.groupedMovies = this.groupMovies(movies, 6);
+  onSearchResults(event: { movies: iMovies[]; query: string }): void {
+    this.filteredMovies = this.movies;
+    this.searchQuery = event.query;
+    this.groupedMovies = this.groupMovies(this.movies, 6);
     this.updateCategories();
   }
 

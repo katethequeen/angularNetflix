@@ -83,7 +83,16 @@ export class NavbarComponent {
     const query = target.value.toLowerCase();
     this.searchQuery = query;
     this.filteredMovies = this.movies.filter((movie) => {
-      return movie.name.toLowerCase().includes(query);
+      const matchesName = movie.name.toLowerCase().includes(query);
+      const matchesActor = movie.actors.some((actor: string) =>
+        actor.toLowerCase().includes(query)
+      );
+      const matchesGenre = Array.isArray(movie.categories)
+        ? movie.categories.some((category: string) =>
+            category.toLowerCase().includes(query)
+          )
+        : false;
+      return matchesName || matchesActor || matchesGenre;
     });
     this.searchResults.emit({ movies: this.filteredMovies, query });
   }
