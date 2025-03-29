@@ -1,14 +1,14 @@
 <mat-toolbar>
   <mat-icon class="menu-icon" (click)="toggleSidenav()">menu</mat-icon>
-  <a mat-button [routerLink]="['/home', { id: account.id }]" class="logo"
+  <a mat-button [routerLink]="['/entry/home', { id: account.id }]" class="logo"
     >Netflix</a
   >
   <div class="toolbar-links">
     <span class="spacer"></span>
-    <a mat-button [routerLink]="['/home', { id: account.id }]">Home</a>
-    <a mat-button [routerLink]="['/home', account.id, 'show']">TV Shows</a>
-    <a mat-button [routerLink]="['/home', account.id, 'movies']">Movies</a>
-    <a mat-button [routerLink]="['/home', account.id, 'new-popular']"
+    <a mat-button [routerLink]="['/entry/home', { id: account.id }]">Home</a>
+    <a mat-button [routerLink]="['/entry/home', account.id, 'show']">TV Shows</a>
+    <a mat-button [routerLink]="['/entry/home', account.id, 'movies']">Movies</a>
+    <a mat-button [routerLink]="['/entry/home', account.id, 'new-popular']"
       >New & Popular</a
     >
     <span class="spacer"></span>
@@ -47,7 +47,7 @@
     </button>
     <ul class="dropdown-menu">
       <li *ngFor="let acc of filteredAccounts">
-        <a [routerLink]="['/home', { id: acc.id }]" class="dropdown-a">
+        <a [routerLink]="['/entry/home', { id: acc.id }]" class="dropdown-a">
           <img [src]="acc.icon" alt="account_icon" class="dropdown-img" />
           <span class="text-start dropdown-span">{{ acc.name }}</span>
         </a>

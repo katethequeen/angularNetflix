@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'modify/:id',
     component: ModifyProfileComponent,
   },
+  {
+    path: '**',
+    redirectTo: '', // Reindirizza a EntryComponent
+  },
 ];
 
 @NgModule({

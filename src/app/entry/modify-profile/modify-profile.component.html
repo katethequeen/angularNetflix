@@ -5,7 +5,8 @@
   <form>
     <div class="row">
       <div class="col col-2">
-        <img [src]="account.icon" alt="icon" class="icon" />
+        <img *ngIf="account?.icon" [src]="account.icon" alt="icon" class="icon" />
+
       </div>
       <div class="col col-9 offset-1">
         <div class="nome">

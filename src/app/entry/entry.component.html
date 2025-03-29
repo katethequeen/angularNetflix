@@ -11,8 +11,8 @@
         <a
           [routerLink]="
             managingProfile
-              ? ['/modify', account.id]
-              : ['/home', { id: account.id }]
+              ? ['/entry/modify', account.id]
+              : ['/entry/home', { id: account.id }]
           "
         >
           <app-squared-profile
@@ -22,7 +22,7 @@
         </a>
       </div>
       <div class="col" *ngFor="let placeholder of getPlaceholderProfiles()">
-        <a routerLink="/enter-name">
+        <a routerLink="/entry/enter-name">
           <app-squared-profile
             [managingProfile]="managingProfile"
             [account]="placeholder"

@@ -74,7 +74,7 @@ export class EnterNameComponent implements OnInit {
     };
     this.accountSvc.createAccount(this.newAccount).subscribe((account) => {
       this.getNewIcon();
-      this.router.navigate(['/entry']);
+      this.router.navigate(['/entry ']);
     });
   }
 }
